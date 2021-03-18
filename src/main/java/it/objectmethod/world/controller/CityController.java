@@ -18,7 +18,7 @@ public class CityController {
 	@Autowired
 	private CityRepository cityRepo;
 
-	@GetMapping("/{name}/find-city")
+	@GetMapping("/{name}/details")
 	public City findCityByName(@PathVariable("name") String name) {
 		City city = cityRepo.findByName(name);
 		return city;
@@ -26,7 +26,7 @@ public class CityController {
 
 	@GetMapping("/{countryCode}/cities")
 	public List<City> findCity(@PathVariable("countryCode") String countryCode) {
-		List<City> cities = cityRepo.findIdAndPopulationByCountryCode(countryCode);
+		List<City> cities = cityRepo.findByCountryCode(countryCode);
 		return cities;
 	}
 

@@ -18,15 +18,15 @@ public class CountryController {
 	@Autowired
 	private CountryRepository countryRepo;
 
-	@GetMapping("/find-continent")
+	@GetMapping("/continent")
 	public List<String> findContinentFromCountry() {
 		List<String> continent = countryRepo.findDistinctContinent();
 		return continent;
 	}
 
-	@GetMapping("/find-country-name")
+	@GetMapping("/details")
 	public List<Country> findCountryName(@RequestParam("continent") String continent) {
-		List<Country> countryName = countryRepo.findCountryNameAndPopulationByContinent(continent);
+		List<Country> countryName = countryRepo.findByContinent(continent);
 		return countryName;
 	}
 

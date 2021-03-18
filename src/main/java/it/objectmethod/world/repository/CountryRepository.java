@@ -14,8 +14,7 @@ public interface CountryRepository extends JpaRepository<Country, String> {
 	@Query(value = "SELECT DISTINCT continent FROM Country")
 	public List<String> findDistinctContinent();
 
-	@Query(value = "SELECT c FROM Country c WHERE continent = ?1")
-	public List<Country> findCountryNameAndPopulationByContinent(String continent);
+	public List<Country> findByContinent(String continent);
 
 	@Query(value = "SELECT c FROM Country c WHERE ('' = ?1 OR countryName = ?1) AND ('' = ?2 OR continent = ?2)")
 	public List<Country> findCountryByNameAndContinent(String countryName, String continent);
